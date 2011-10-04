@@ -18,15 +18,22 @@
         .logo
           %h1 500flow
         .stream
-          %span stream
-          %br
-          %select
-            %option{ :value => 'Popular' } Popular
-            %option{ :value => "Editor's Choice" } Editor's Choice
+          %ul.dropdown
+            %li
+              %a{ :href => 'Popular' } Popular
+              %ul
+                %li
+                  %a{ :href => "#" } Editor's Choice
         .separator
-          %span k
         .userstream
-          %em User
+          %strong User
+          %ul.dropdown
+            %li
+              %a{ :href => 'Favorites' } Favorites
+              %ul
+                %li
+                  %a{ :href => "#" } Album
+        .separator
         .promotion
           %em follow me on twitter
 

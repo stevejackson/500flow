@@ -3,19 +3,34 @@
 @import "blueprint";
 @import "blueprint/debug";
 
-$header-height: 75px;
+$header-height: 65px;
 
 $font-color: white;
 
 $content-width: 900px;
 
+$header-background-color: black;
+$background-color: #212121;
+
+$theme-color: red;
+
+::selection, ::-moz-selection { background: $background-color; }
 body {
   margin: 0;
   padding: 0;
-  background: #212121;
+  background: $background-color;
   font-family: museo-sans, helvetica, arial, sans-serif;
   color: $font-color;
 }
+
+a, a:visited {
+  color: $theme-color;
+  text-decoration: none;
+
+  &:hover {
+    color: darken($theme-color, 10%); }
+}
+
 
 header {
   position: fixed;
@@ -23,24 +38,25 @@ header {
   top: 0;
   left: 0;
   height: $header-height;
-  background: black;
+  background: $header-background-color;
   z-index: 10;
 }
 
-h1, h2, h3, h4, h5, span, p, a, img {
+h1, h2, h3, h4, h5, span, p, a, img, ul, li {
   padding: 0;
   margin: 0;
 }
 
 .header_content_container {
   @include container;
+  z-index: 20;
   margin: 0 auto;
   width: $content-width;
-  height: 100%;
+  height: 200px;
 
-  padding-top: 1em;
+  padding-top: 10px;
 
-  @include showgrid;
+  //@include showgrid;
 
   .logo {
     @include column(6);
@@ -55,11 +71,11 @@ h1, h2, h3, h4, h5, span, p, a, img {
   }
 
   .userstream {
-    @include column(8);
+    @include column(6);
   }
 
   .promotion {
-    @include column(5, true);
+    @include column(6, true);
   }
 }
 
@@ -70,5 +86,50 @@ h1, h2, h3, h4, h5, span, p, a, img {
   
   margin: 0 auto;
   width: $content-width;
-  background: red;
+  background: $background-color;
 }
+
+.separator {
+  border-right: 1px solid #747474;
+  height: $header-height - 10px - 10px;
+}
+
+/******** navigation **********/
+
+.dropdown a {
+  font-size: 1.2em;
+}
+
+$stream-width: span(4);
+
+.dropdown {
+  list-style: none;
+
+  float: left;
+  width: $stream-width;
+  position: relative;
+  z-index: 25;
+  background: $header-background-color;
+}
+
+.dropdown li {
+  float: left;
+  margin-right: 10px;
+  position: relative;
+}
+
+.dropdown ul {
+  position: absolute;
+  list-style: none;
+  left: -9999px;
+  background: $header-background-color;
+  width: $stream-width;
+
+  z-index: 20;
+}
+
+.dropdown ul li { float: none; }
+
+.dropdown ul a { white-space: nowrap; }
+
+.dropdown li:hover ul { left: 0; }
