@@ -1,4 +1,74 @@
+@import "partials/base";
+
+@import "blueprint";
+@import "blueprint/debug";
+
+$header-height: 75px;
+
+$font-color: white;
+
+$content-width: 900px;
+
 body {
-  font-face: sans-serif;
-  font-size: 2em;
+  margin: 0;
+  padding: 0;
+  background: #212121;
+  font-family: museo-sans, helvetica, arial, sans-serif;
+  color: $font-color;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: $header-height;
+  background: black;
+  z-index: 10;
+}
+
+h1, h2, h3, h4, h5, span, p, a, img {
+  padding: 0;
+  margin: 0;
+}
+
+.header_content_container {
+  @include container;
+  margin: 0 auto;
+  width: $content-width;
+  height: 100%;
+
+  padding-top: 1em;
+
+  @include showgrid;
+
+  .logo {
+    @include column(6);
+  }
+
+  .stream {
+    @include column(4);
+  }
+
+  .separator {
+    @include column(1);
+  }
+
+  .userstream {
+    @include column(8);
+  }
+
+  .promotion {
+    @include column(5, true);
+  }
+}
+
+.content_container {
+  //push down below header
+  position: relative;
+  top: $header-height;
+  
+  margin: 0 auto;
+  width: $content-width;
+  background: red;
 }

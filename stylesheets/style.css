@@ -1,0 +1,7 @@
+body { background: #212121; font-family: museo-sans, helvetica, arial, sans-serif; color: white; }
+
+header { position: fixed; width: 100%; top: 0; left: 0; height: 100px; background: green; }
+
+.header_content_container { margin: 0 auto; width: 600px; background: red; }
+
+.content_container { margin: 0 auto; width: 600px; background: red; }
