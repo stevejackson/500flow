@@ -14,7 +14,8 @@ $background-color: #212121;
 
 $theme-color: red;
 
-::selection, ::-moz-selection { background: $background-color; }
+::selection, ::-moz-selection { background: $theme-color; }
+
 body {
   margin: 0;
   padding: 0;
@@ -47,6 +48,8 @@ h1, h2, h3, h4, h5, span, p, a, img, ul, li {
   margin: 0;
 }
 
+$header-top-push: 10px;
+
 .header_content_container {
   @include container;
   z-index: 20;
@@ -63,6 +66,7 @@ h1, h2, h3, h4, h5, span, p, a, img, ul, li {
   }
 
   .stream {
+    padding-top: $header-top-push;
     @include column(4);
   }
 
@@ -71,10 +75,12 @@ h1, h2, h3, h4, h5, span, p, a, img, ul, li {
   }
 
   .userstream {
+    padding-top: $header-top-push;
     @include column(6);
   }
 
   .promotion {
+    padding-top: $header-top-push;
     @include column(6, true);
   }
 }

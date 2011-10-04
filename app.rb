@@ -2,6 +2,7 @@ require 'rubygems'
 require 'compass'
 require 'sinatra'
 require 'haml'
+require './flow'
 
 set :app_file, __FILE__
 set :root, File.dirname(__FILE__)
