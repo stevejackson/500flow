@@ -21,8 +21,28 @@ get '/stylesheets/:name.css' do
 end
 
 get '/' do
-  photos = get_photo_stream('photos?feature=editors')
   session[:page] = 1
+  session[:stream] = 'popular'
+
+  photos = get_current_stream()
+ 
+  haml :index, :locals => { :photos => photos }
+end
+
+get '/popular' do
+  session[:page] = 1
+  session[:stream] = 'popular'
+
+  photos = get_current_stream()
+ 
+  haml :index, :locals => { :photos => photos }
+end
+
+get '/editors' do
+  session[:page] = 1
+  session[:stream] = 'editors'
+
+  photos = get_current_stream()
  
   haml :index, :locals => { :photos => photos }
 end
@@ -30,11 +50,11 @@ end
 get '/getNextPage' do
   session[:page] += 1
   
-  photos = get_photo_stream('photos?feature=editors&page=' + session[:page].to_s)
+  photos = get_current_stream()
 
   haml :gallery, :locals => { :photos => photos }
 end
 
-get '/photos' do
-
+def get_current_stream()
+  photos = get_photo_stream('photos?feature=' + session[:stream] + '&page=' + session[:page].to_s)
 end
