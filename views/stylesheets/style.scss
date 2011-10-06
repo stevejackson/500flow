@@ -10,7 +10,7 @@ $font-color: white;
 $content-width: 900px;
 
 $header-background-color: black;
-$background-color: #212121;
+$background-color: #1a1a1a;
 
 $theme-color: red;
 
@@ -22,6 +22,8 @@ body {
   margin: 0;
   padding: 0;
   background: $background-color;
+  background-image: url('/images/bg.png');
+  background-repeat: repeat;
   font-family: museo-sans, helvetica, arial, sans-serif;
   color: $font-color;
 }
@@ -50,17 +52,17 @@ h1, h2, h3, h4, h5, span, p, a, img, ul, li {
   margin: 0;
 }
 
-$header-top-push: 10px;
+$header-top-push: 12px;
 
 .header_content_container {
   @include container;
   z-index: 20;
   margin: 0 auto;
   width: $content-width;
-  height: 200px;
 
   padding-top: 10px;
 
+  overflow: visible;
   //@include showgrid;
 
   .logo {
@@ -94,7 +96,6 @@ $header-top-push: 10px;
   
   margin: 0 auto;
   width: $content-width;
-  background: $background-color;
 }
 
 .separator {
@@ -112,7 +113,6 @@ $stream-width: span(4);
 
 .dropdown {
   list-style: none;
-
   float: left;
   width: $stream-width;
   position: relative;
@@ -132,8 +132,6 @@ $stream-width: span(4);
   left: -9999px;
   background: $header-background-color;
   width: $stream-width;
-
-  z-index: 20;
 }
 
 .dropdown ul li { float: none; }

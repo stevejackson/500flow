@@ -1,6 +1,7 @@
 $(document).ready(function() {
-
+  $(window).scrollTo('1000px', 2000, { axis: 'y' });
 });
+
 
 // When they scroll to the bottom of the page...
 $(window).scroll(function() {

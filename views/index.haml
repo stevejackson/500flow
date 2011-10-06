@@ -9,6 +9,7 @@
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script type="text/javascript" src="/javascripts/flow.js"></script>
+    %script{ :type => 'text/javascript', :src => '/javascripts/jquery.scrollTo-min.js' }
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -38,7 +39,5 @@
         .promotion
           %em follow me on twitter
 
-
     .content_container
-      .body
-        = haml :gallery, :locals => { :photos => photos }
+      = haml :gallery, :locals => { :photos => photos }
