@@ -14,6 +14,8 @@ $background-color: #212121;
 
 $theme-color: red;
 
+.clear { clear:both; }
+
 ::selection, ::-moz-selection { background: $theme-color; }
 
 body {
@@ -139,3 +141,10 @@ $stream-width: span(4);
 .dropdown ul a { white-space: nowrap; }
 
 .dropdown li:hover ul { left: 0; }
+
+/***** gallery ******/
+
+.gallery-image {
+  @include column(7);
+  background: black;
+}
