@@ -26,28 +26,28 @@ function getNextPage() {
 
 function loadGallery() {
   $('.gallery-image').click(function() {
-    $(window).scrollTo( $(this).offset().top - 65, 500 );
+    var afterScroll = function(me) {
+      // grab the full image, stick it into the lightbox
+      showLightbox($(window).width() / 2 - 140, $(window).height() / 2 - 140);
+      $('#lightbox').html(me.children('.full').html());
+      $('#lightbox img').css("display", "block");
 
-    // grab the full image, stick it into the lightbox
-    showLightbox($(this).position().left, $(this).position().top);
-    $('#lightbox').html($(this).children('.full').html());
-    $('#lightbox .full').css('display', 'block');
-
-    var afterLoaded = function() {
-      var width = $('#lightbox img').width();
-      var height = $('#lightbox img').height();
-      
-      $('#lightbox').animate({
-        'left': '50%',
-        'top': '50%',
-        'margin-top': -height / 2,
-        'margin-left': -width / 2,
-        'width': width,
-        'height': height
-      }, 1000);
+      var afterLoaded = function() {
+        var width = $('#lightbox img').width();
+        var height = $('#lightbox img').height();
+        
+        $('#lightbox').animate({
+          'margin-top': -height / 2,
+          'margin-left': -width / 2,
+          'width': width,
+          'height': height
+        }, 1000);
+      };
+        
+      $('#lightbox').preloader({'ondone':afterLoaded});
     };
 
-    $('#lightbox').preloader({'ondone':afterLoaded});
+    $(window).scrollTo( $(this).offset().top - 65, 500, {onAfter: afterScroll($(this))});
 
   });
 
@@ -63,7 +63,9 @@ function showLightbox(x, y) {
     'left': x,
     'top': y,
     'width': '280px',
-    'height': '280px'
+    'height': '280px',
+    'margin-top': 0,
+    'margin-left': 0
   });
 
   $('#lightbox').show();
