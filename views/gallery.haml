@@ -1,4 +1,7 @@
-- photos.each do |photo|
-  .gallery-image
-    %a{ :href => photo.full }
-      %img{ :src => photo.thumb }
+.gallery-page
+  - photos.each do |photo|
+    .gallery-image
+      %img{ :src => photo.thumb, :class => 'thumb' }
+      .full
+        %img{ :src => photo.full, :class => 'full' }
+    

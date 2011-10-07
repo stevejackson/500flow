@@ -89,7 +89,7 @@ $header-top-push: 12px;
   }
 }
 
-.content_container {
+#content_container {
   //push down below header
   position: relative;
   top: $header-height;
@@ -145,4 +145,37 @@ $stream-width: span(4);
 .gallery-image {
   @include column(7);
   background: black;
+  width: 280px;
+  height: 280px;
+  cursor: pointer;
+}
+
+.full {
+  display: none;
+}
+
+#lightbox {
+  position: fixed;
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+
+  width: 280px;
+  height: 280px;
+
+  z-index: 5;
+  background: white;
+  
+  display: none;
+}
+
+#lightbox_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+
+  display: none;
 }
