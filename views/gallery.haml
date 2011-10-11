@@ -1,7 +1,8 @@
 .gallery-page
   - photos.each do |photo|
     .gallery-image
-      %img{ :src => photo.thumb, :class => 'thumb' }
+      .thumb
+        %img{ :src => photo.thumb, :class => 'thumb' }
       .full
         %img{ :src => photo.full, :class => 'full'}
     

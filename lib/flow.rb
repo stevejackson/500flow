@@ -25,16 +25,9 @@ def get_photo_stream(stream_url)
 
   json_result['photos'].each do |photo|
     image_url = photo['image_url']
-
-    # remove some parameters, so we can access the full images
     uri = Addressable::URI.parse(image_url)
-    params = uri.query_values
-    params.delete('AWSAccessKeyId')
-    params.delete('Expires')
-    params.delete('Signature')
-    uri.query_values = params
     
-    p = Photo.new(uri.to_s.sub('2.jpg', '3.jpg'), uri.to_s.sub('2.jpg', '4.jpg'))
+    p = Photo.new(uri.to_s.sub('2.jpg', '3.jpg'), uri.to_s.sub('2.jpg', '5.jpg'))
     photos << p
   end
 
