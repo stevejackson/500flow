@@ -1,10 +1,23 @@
-
 $(document).ready(function() {
 
   loadGallery();
 
   $("#lightbox_overlay, header").click(function() {
     hideLightbox();
+  });
+
+  // username text field 
+  var defaultUsername = 'sjackson';
+  $("#username").val(defaultUsername);
+  $("#username").focus(function() {
+    if($(this).val() == defaultUsername) {
+      $(this).val('');
+    }
+  });
+  $('#username').blur(function() {
+    if($(this).val() == '') {
+      $(this).val(defaultUsername);
+    }
   });
 
 });
@@ -27,7 +40,6 @@ function getNextPage() {
 function loadGallery() {
   $('.gallery-image').click(function() {
     var afterScroll = function(me) {
-      // grab the full image, stick it into the lightbox
 
       showLightbox($(window).width() / 2 - 140, $(window).height() / 2 - 140);
       $('#lightbox').html(me.children('.full').html());
@@ -37,7 +49,6 @@ function loadGallery() {
         var width = $('#lightbox img').width();
         var height = $('#lightbox img').height();
         
-        //alert(width);
         $('#lightbox').animate({
           'top': '50%',
           'left': '50%',
@@ -52,7 +63,7 @@ function loadGallery() {
       $('#lightbox').preloader({'ondone':afterLoaded});
     };
 
-    $(window).scrollTo( $(this).offset().top - 65, 500, {onAfter: afterScroll($(this))});
+    $(window).scrollTo( $(this).offset().top - 45, 500, {onAfter: afterScroll($(this))});
 
   });
 

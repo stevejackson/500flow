@@ -7,10 +7,14 @@
 
     <script type="text/javascript" src="http://use.typekit.com/agc4gdk.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
     %script{ :type => 'text/javascript', :src => '/javascripts/jquery.scrollTo-min.js' }
     %script{ :type => 'text/javascript', :src => '/javascripts/jquery.preloader.js' }
+
     <script type="text/javascript" src="/javascripts/flow.js"></script>
+
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -19,26 +23,29 @@
     %header
       .header_content_container
         .logo
-          %h1 500flow
+          %a{ :href => '/' } 500flow
         .stream
           %ul.dropdown
             %li
-              %a{ :href => '/popular' } Popular
+              .navpad
+                %a{ :href => '/popular' } Popular
               %ul
                 %li
-                  %a{ :href => "/editors" } Editor's Choice
-        .separator
+                  .navpad
+                    %a{ :href => "/editors" } Editor's Choice
         .userstream
-          %strong User
-          %ul.dropdown
-            %li
-              %a{ :href => 'Favorites' } Favorites
-              %ul
-                %li
-                  %a{ :href => "#" } Album
-        .separator
+          %form{ :name => 'favorites', :method => 'post', :action => '/user'}
+            %ul.dropdown
+              %li
+                .navpad
+                  %button{ :type => 'submit', :name => 'useraction', :value => 'favorites' } Favorites
+                %ul
+                  %li
+                    .navpad
+                      %button{ :type => 'submit', :name => 'useraction', :value => 'album' } Album
+            %input{ :id => 'username', :name => 'username', :type => 'text' }
         .promotion
-          %em follow me on twitter
+          %a{ :href => "http://twitter.com/_sjackson" } Follow me on Twitter
 
     %content
       #lightbox_overlay

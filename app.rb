@@ -21,9 +21,7 @@ get '/stylesheets/:name.css' do
 end
 
 get '/' do
-  session[:photo_index] = 0
-  session[:page] = 1
-  session[:stream] = 'popular'
+  reset_stream('feature=popular')
 
   photos = get_current_stream()
  
@@ -31,9 +29,7 @@ get '/' do
 end
 
 get '/popular' do
-  session[:photo_index] = 0
-  session[:page] = 1
-  session[:stream] = 'popular'
+  reset_stream('feature=popular')
 
   photos = get_current_stream()
  
@@ -41,12 +37,24 @@ get '/popular' do
 end
 
 get '/editors' do
-  session[:photo_index] = 0
-  session[:page] = 1
-  session[:stream] = 'editors'
+  reset_stream("feature=editors")
 
   photos = get_current_stream()
  
+  haml :index, :locals => { :photos => photos }
+end
+
+post '/user' do
+  action = params[:useraction]
+
+  if action == 'favorites'
+    reset_stream("feature=user_favorites&username=#{params[:username]}")
+  elsif action == 'album'
+    reset_stream "feature=user&username=#{params[:username]}"
+  end
+
+  photos = get_current_stream()
+
   haml :index, :locals => { :photos => photos }
 end
 
@@ -58,6 +66,12 @@ get '/getNextPage' do
   haml :gallery, :locals => { :photos => photos }
 end
 
+def reset_stream(stream='')
+  session[:photo_index] = 0
+  session[:page] = 1
+  session[:stream] = stream
+end
+
 def get_current_stream()
-  photos = get_photo_stream('photos?feature=' + session[:stream] + '&page=' + session[:page].to_s + '&rpp=15')
+  photos = get_photo_stream('photos?' + session[:stream] + '&page=' + session[:page].to_s + '&rpp=15')
 end
