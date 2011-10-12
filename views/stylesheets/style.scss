@@ -187,7 +187,10 @@ $hover-height: 50px;
     height: $hover-height;
     background: black;
 
-    padding: 10px;
+    text-align: center;
+
+    font-weight: bold;
+    padding-top: 8px;
   }
 }
 .gallery-image .details:hover {
