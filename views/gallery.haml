@@ -8,8 +8,7 @@
           .details
             .content
               %a{ :href => "http://500px.com/photo/#{photo.id}" }= photo.title.upcase
-        .full
-          %img{ :src => photo.full, :class => 'full'}
+        #full{ :title => photo.full }
       .clear
     - else
       .gallery-image
@@ -18,6 +17,4 @@
           .details
             .content
               %a{ :href => "http://500px.com/photo/#{photo.id}" }= photo.title.upcase
-        .full
-          %img{ :src => photo.full, :class => 'full'}
-    
+        #full{ :title => photo.full }

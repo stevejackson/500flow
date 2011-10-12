@@ -42,13 +42,15 @@ function loadGallery() {
     var afterScroll = function(me) {
 
       showLightbox($(window).width() / 2 - 140, $(window).height() / 2 - 140);
-      $('#lightbox').html(me.children('.full').html());
+      var photoFullURL = me.children('#full').attr('title');
+      $('#lightbox').html('<img src="' + photoFullURL + '" />');
       $('#lightbox img').css("display", "block");
 
       var afterLoaded = function() {
         var width = $('#lightbox img').width();
         var height = $('#lightbox img').height();
         
+        //alert('ok');
         $('#lightbox').animate({
           'top': '50%',
           'left': '50%',
