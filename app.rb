@@ -21,6 +21,7 @@ get '/stylesheets/:name.css' do
 end
 
 get '/' do
+  session[:photo_index] = 0
   session[:page] = 1
   session[:stream] = 'popular'
 
@@ -30,6 +31,7 @@ get '/' do
 end
 
 get '/popular' do
+  session[:photo_index] = 0
   session[:page] = 1
   session[:stream] = 'popular'
 
@@ -39,6 +41,7 @@ get '/popular' do
 end
 
 get '/editors' do
+  session[:photo_index] = 0
   session[:page] = 1
   session[:stream] = 'editors'
 
@@ -56,5 +59,5 @@ get '/getNextPage' do
 end
 
 def get_current_stream()
-  photos = get_photo_stream('photos?feature=' + session[:stream] + '&page=' + session[:page].to_s)
+  photos = get_photo_stream('photos?feature=' + session[:stream] + '&page=' + session[:page].to_s + '&rpp=15')
 end

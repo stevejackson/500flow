@@ -3,6 +3,8 @@
 @import "blueprint";
 @import "blueprint/debug";
 
+@import "compass/css3";
+
 $header-height: 65px;
 
 $font-color: white;
@@ -33,7 +35,7 @@ a, a:visited {
   text-decoration: none;
 
   &:hover {
-    color: darken($theme-color, 10%); }
+  color: darken($theme-color, 10%); }
 }
 
 
@@ -63,7 +65,6 @@ $header-top-push: 12px;
   padding-top: 10px;
 
   overflow: visible;
-  //@include showgrid;
 
   .logo {
     @include column(6);
@@ -93,7 +94,7 @@ $header-top-push: 12px;
   //push down below header
   position: relative;
   top: $header-height;
-  
+
   margin: 0 auto;
   width: $content-width;
 }
@@ -142,12 +143,62 @@ $stream-width: span(4);
 
 /***** gallery ******/
 
+$thumb-width: span(8);
+$thumb-height: span(8);
+$hover-height: 50px;
+
 .gallery-image {
-  @include column(7);
+  @include column(8);
+  height: span(8);
   background: black;
-  width: 280px;
-  height: 280px;
+  width: span(8);
   cursor: pointer;
+  position: relative;
+}
+
+.gallery-image.last {
+  @include column(8, true);
+}
+
+.gallery-image img {
+  margin-top: 6px;
+  margin-left: 6px;
+  opacity: 1;
+}
+
+.gallery-image .details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+
+  width: $thumb-width;
+  height: $thumb-height;
+  overflow: hidden;
+
+  @include transition-property(opacity);
+  @include transition-duration(0.25s);
+  @include transition-timing-function(ease-in);
+
+  .content {
+    position: absolute;
+    top: $thumb-height - $hover-height;
+    width: $thumb-width;
+    height: $hover-height;
+    background: black;
+
+    padding: 10px;
+  }
+}
+.gallery-image .details:hover {
+  opacity: 0.8;
+}
+
+.gallery-image:hover:after,
+.gallery-image:focus:after {
+  opacity: 0.8;
+  background: yellow;
+  content: attr(title);
 }
 
 .full {
@@ -165,7 +216,7 @@ $stream-width: span(4);
 
   z-index: 5;
   background: white;
-  
+
   display: none;
   opacity: 0.0;
 }

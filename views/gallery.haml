@@ -1,8 +1,23 @@
 .gallery-page
   - photos.each do |photo|
-    .gallery-image
-      .thumb
-        %img{ :src => photo.thumb, :class => 'thumb' }
-      .full
-        %img{ :src => photo.full, :class => 'full'}
+    - session[:photo_index] += 1
+    - if session[:photo_index] % 3 == 0
+      .gallery-image.last
+        .thumb
+          %img{ :src => photo.thumb, :class => 'thumb' }
+          .details
+            .content
+              = photo.title.upcase
+        .full
+          %img{ :src => photo.full, :class => 'full'}
+      .clear
+    - else
+      .gallery-image
+        .thumb
+          %img{ :src => photo.thumb, :class => 'thumb' }
+          .details
+            .content
+              = photo.title.upcase
+        .full
+          %img{ :src => photo.full, :class => 'full'}
     

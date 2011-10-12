@@ -3,7 +3,7 @@ $(document).ready(function() {
 
   loadGallery();
 
-  $("#lightbox_overlay").click(function() {
+  $("#lightbox_overlay, header").click(function() {
     hideLightbox();
   });
 
@@ -61,7 +61,7 @@ function loadGallery() {
 
 function showLightbox(x, y) {
   $('#content_container').animate({
-    'opacity': 0.2
+    'opacity': 0.1
   }, 500);
 
   $('#lightbox').css({

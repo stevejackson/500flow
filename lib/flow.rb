@@ -27,7 +27,10 @@ def get_photo_stream(stream_url)
     image_url = photo['image_url']
     uri = Addressable::URI.parse(image_url)
     
-    p = Photo.new(uri.to_s.sub('2.jpg', '3.jpg'), uri.to_s.sub('2.jpg', '5.jpg'))
+    p = Photo.new
+    p.thumb = uri.to_s.sub('2.jpg', '3.jpg')
+    p.full = uri.to_s.sub('2.jpg', '4.jpg')
+    p.title = photo['name']
     photos << p
   end
 
