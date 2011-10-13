@@ -7,6 +7,8 @@ $.fn.preloader = function(options){
                      ondone:function(){ },
                      oneachload:function(image){  },
                      fadein: 500,
+                     spinner: '/images/ajax-loader.gif',
+                     preloader_class: 'preloader'
                     };
 
     // variables declaration and precaching images and parent container
@@ -39,7 +41,7 @@ $.fn.preloader = function(options){
                 delaySum = delaySum + options.delay;
 
                 $(images[i]).css("visibility","visible").delay(delaySum).animate({opacity:1},options.fadein,
-                  function(){ $(this).parent().removeClass("preloader");   });
+                  function(){ $(this).parent().removeClass(options.preloader_class);   });
               }
             }
           }
@@ -48,7 +50,7 @@ $.fn.preloader = function(options){
     };
 
     images.each(function(){
-        $(this).parent().addClass('preloader');
+        $(this).parent().addClass(options.preloader_class);
         checkFlag[i++] = false;
     });
 
@@ -56,7 +58,7 @@ $.fn.preloader = function(options){
 
     var icon = $("<img />", {
         id: 'loadingicon',
-        src: 'images/ajax-loader.gif'
+        src: options.spinner
     }).hide().appendTo('body');
 
     // Once the ajax-loader loads, start preloading

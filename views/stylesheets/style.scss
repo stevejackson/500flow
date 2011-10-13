@@ -24,7 +24,8 @@ $theme-color: #1c81a7;
 
 ::selection, ::-moz-selection { background: $theme-color; }
 
-.preloader { background: url('/images/ajax-loader.gif') center center no-repeat black; }
+.preloader { background: url('/images/ajax-loader.gif') center center no-repeat; }
+.preloader-white { background: url('/images/ajax-loader-white.gif') center center no-repeat white; }
 
 body {
   margin: 0;
@@ -279,7 +280,6 @@ $hover-height: 50px;
   height: 280px;
 
   z-index: 5;
-  background: white;
 
   display: none;
   opacity: 0.0;

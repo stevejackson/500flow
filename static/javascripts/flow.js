@@ -67,7 +67,7 @@ $(function(){
           }, 1000);
         };
 
-        $('#lightbox').preloader({'ondone':afterLoaded});
+        $('#lightbox').preloader({'ondone':afterLoaded, 'spinner':'/images/ajax-loader-white.gif', 'preloader_class': 'preloader-white'});
       };
 
       $(window).scrollTo( $(this).offset().top - 45, 500, {onAfter: afterScroll($(this))});
@@ -90,6 +90,8 @@ $(function(){
       'margin-top': 0,
       'margin-left': 0
     });
+
+    $('#lightbox').animate({'opacity': 1}, 500);
 
     $('#lightbox').show();
     $('#lightbox_overlay').show();
