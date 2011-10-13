@@ -28,19 +28,20 @@ $.fn.preloader = function(options){
 
           for(i = 0;i < images.length; i++)
           {
-              if(images[i].complete == true)
+            if(images[i].complete == true)
+            {
+              if(checkFlag[i] == false)
               {
-                  if(checkFlag[i] == false)
-                  {
-                      checkFlag[i] = true;
-                      options.oneachload(images[i]);
-                      counter++;
+                checkFlag[i] = true;
+                options.oneachload(images[i]);
+                counter++;
 
-                      delaySum = delaySum + options.delay;
-                    $(images[i]).css("visibility","visible").delay(delaySum).animate({opacity:1},options.fadein,
-                    function(){ $(this).parent().removeClass("preloader");   });
-                  }
+                delaySum = delaySum + options.delay;
+
+                $(images[i]).css("visibility","visible").delay(delaySum).animate({opacity:1},options.fadein,
+                  function(){ $(this).parent().removeClass("preloader");   });
               }
+            }
           }
 
         }, options.check_timer)
