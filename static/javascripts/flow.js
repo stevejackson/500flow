@@ -38,8 +38,8 @@ $(function(){
   function getNextPage() {
     $.get('/getNextPage', function(data) {
       $('#content_container').append(data);
-      loadGallery();
       fetching = false;
+      loadGallery();
     });
   };
 
