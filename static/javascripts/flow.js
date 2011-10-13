@@ -38,7 +38,7 @@ function getNextPage() {
 };
 
 function loadGallery() {
-  $('.gallery-image').click(function() {
+  $('.gallery-page:last .gallery-image').click(function() {
     var afterScroll = function(me) {
 
       showLightbox($(window).width() / 2 - 140, $(window).height() / 2 - 140);
@@ -50,7 +50,6 @@ function loadGallery() {
         var width = $('#lightbox img').width();
         var height = $('#lightbox img').height();
         
-        //alert('ok');
         $('#lightbox').animate({
           'top': '50%',
           'left': '50%',
