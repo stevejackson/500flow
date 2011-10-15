@@ -25,7 +25,7 @@ $theme-color: #1c81a7;
 ::selection, ::-moz-selection { background: $theme-color; }
 
 .preloader { background: url('/images/ajax-loader.gif') center center no-repeat; }
-.preloader-white { background: url('/images/ajax-loader-white.gif') center center no-repeat white; }
+.preloader-white { background: url('/images/ajax-loader.gif') center center no-repeat; }
 
 body {
   margin: 0;
