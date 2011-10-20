@@ -1,0 +1,21 @@
+require 'rake/testtask'
+
+task :default => :server
+
+Rake::TestTask.new do |t|
+  t.libs << './test'
+  t.test_files = FileList['test/test*.rb']
+  t.verbose = true
+end
+
+task :deploy_staging do
+  sh %{rsync -avz --delete --exclude '.git' . magellan:/var/www/apps/500flow/staging/public_html/}
+end
+
+task :deploy_live do
+  sh %{rsync -avz --delete . magellan:/var/www/apps/500flow/live/ --exclude '.git' }
+end
+
+task :server do
+  sh %x{ruby -rubygems app.rb}
+end
