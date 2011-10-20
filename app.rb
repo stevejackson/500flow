@@ -4,6 +4,8 @@ require 'sinatra'
 require 'haml'
 require './lib/flow'
 
+include Flow
+
 set :app_file, __FILE__
 set :root, File.dirname(__FILE__)
 set :views, "views"

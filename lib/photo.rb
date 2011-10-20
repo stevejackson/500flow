@@ -1,11 +1,14 @@
-class Photo
-  attr_accessor :thumb, :full, :title, :id
+module Flow
 
-  def initialize(thumb='', full='', title='', id='')
-    @thumb = thumb
-    @full = full
-    @title = title
-    @id = id
+  class Photo
+    attr_accessor :thumb, :full, :title, :id
+
+    def initialize(thumb='', full='', title='', id='')
+      @thumb = thumb
+      @full = full
+      @title = title
+      @id = id
+    end
   end
 
 end
