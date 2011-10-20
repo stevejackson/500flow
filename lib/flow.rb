@@ -31,7 +31,7 @@ module Flow
       p.thumb = image_url.to_s.sub('2.jpg', '3.jpg')
       p.full = image_url.to_s.sub('2.jpg', '4.jpg')
       p.title = photo['name']
-      p.id = photo['id']
+      p.id = photo['id'].to_s
 
       photos << p
     end

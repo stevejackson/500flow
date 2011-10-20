@@ -12,9 +12,13 @@ class FlowTest < Test::Unit::TestCase
   def test_photo_stream_has_fields_filled_out
     photos = get_photo_stream('photos?feature=popular')
 
-    assert_not_nil photos[0].thumb
-    assert_not_nil photos[0].full
-    assert_not_nil photos[0].title
-    assert_not_nil photos[0].id
+    assert !blank?(photos[0].thumb)
+    assert !blank?(photos[0].full)
+    assert !blank?(photos[0].title)
+    assert !blank?(photos[0].id)
+  end
+
+  def blank?(string)
+    string.nil? or string.empty?
   end
 end
