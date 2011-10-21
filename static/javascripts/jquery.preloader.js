@@ -14,12 +14,12 @@ $.fn.preloader = function(options){
     // variables declaration and precaching images and parent container
      var options = $.extend(defaults, options);
      var root = $(this);
-     var images = root.find("img").css({"visibility":"hidden",opacity:0});
+     var images = root.find("img").css({"visibility":"hidden", opacity:0});
      var timer,  counter = 0, i = 0, checkFlag = [], delaySum = options.delay;
 
-     init = function(){
+     init = function() {
 
-       timer = setInterval(function(){
+       timer = setInterval(function() {
 
           if(counter >= checkFlag.length)
           {
@@ -40,8 +40,11 @@ $.fn.preloader = function(options){
 
                 delaySum = delaySum + options.delay;
 
-                $(images[i]).css("visibility","visible").delay(delaySum).animate({opacity:1},options.fadein,
-                  function(){ $(this).parent().removeClass(options.preloader_class);   });
+                $(images[i]).css("visibility","visible").delay(delaySum).animate(
+                    {opacity:1},
+                    options.fadein,
+                    function(){ $(this).parent().removeClass(options.preloader_class);}
+                    );
               }
             }
           }
